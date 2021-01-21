@@ -1,0 +1,33 @@
+extends layout
+block content
+
+  h1=title
+
+  if aucuneUtilisation
+    .alert.alert-warning.alert-dismissible.fade.show Aucune utilisation
+      button(type="button" class="btn-close" data-dismiss="alert" aria-label="Close")
+
+  form( method="POST")
+    .mb-3
+      label.form-label(for="date") Date
+      .col-md-3
+        input#date.form-control(
+          type="month",
+          name="date",
+          required
+
+        )
+    button.btn.btn-sm.btn-outline-dark(type="submit")  Facturer
+    a.btn.btn-sm.btn-outline-dark(href='/click-fablab/utilisateur')  Retour
+  hr
+  h5 Les utilisation à facturer
+  br
+  each utilisation in utilisations
+    if utilisation.facturer === false
+      label.form-check-label(for=utilisation) <strong>#{utilisation.date}</strong> :  #{utilisation.equipement.name} -- #{utilisation.equipement.price}/ la minute
+      br
+
+
+
+
+

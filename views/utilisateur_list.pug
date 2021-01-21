@@ -1,0 +1,39 @@
+
+extends layout
+block content
+  h1= title
+
+  table.table
+    thead-thead-dark
+      tr
+        th(scope="col") First name
+        th(scope="col") Family name
+        th(scope="col") email
+
+    tbody
+    each utilisateur in utilisateurs
+      tr
+        td=utilisateur.first_name
+        td=utilisateur.family_name
+        td=utilisateur.username
+        if user.can("utilisateurDetail")
+          td
+            a.btn.btn-sm.btn-outline-dark(href=`/click-fablab/${utilisateur.url}/detail`)  Les données
+            a.btn.btn-sm.btn-outline-dark(href=`/click-fablab/utilisation/${utilisateur.username}/detail`) Les utilisations
+            if (user.can("factureDelete"))
+              a.btn.btn-sm.btn-outline-dark(href=`/click-fablab/facture/${utilisateur.username}/create`) Supprimer Facture
+            a.btn.btn-sm.btn-outline-dark(href="/click-fablab/utilisation/"+utilisateur.username+"/create") New utilisation
+            a.btn.btn-sm.btn-outline-dark(href=`/click-fablab/facture/${utilisateur.username}/create`) Add Facture
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,19 @@
+extends layout
+block content
+
+  h1=title
+  p Voulez-vous supprimer la facture ?
+    form(method="POST")
+      .mb-3
+        input#factureId.form-control(
+          type="hidden",
+          name="factureId",
+          required="true",
+          value=facture.id
+        )
+      .row.mb-3
+        div.btn-toolbar
+          div.btn-group.mr-2
+            button.btn.btn-sm.btn-outline-dark(type="submit") Delete
+          div.btn-group.mr-2
+              a.btn.btn-sm.btn-outline-dark(href='/click-fablab/retour') Retour

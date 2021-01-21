@@ -1,0 +1,35 @@
+extends layout
+block content
+
+  h1=title
+
+  h3 Utilisation: #{utilisation.name}
+  div(style='margin-left:20px;margin-top:20px')
+    dl
+      if notFacture
+        h5 Il existe une facture pour cette utilisation
+        div.btn-group.mr-2
+          a.btn.btn-sm.btn-outline-dark(href='/click-fablab/utilisation') Retour
+      else
+        h5 Aucune facture pour cette utilisation
+        hr
+        p Voulez-vous supprimer ?
+
+        form(method="POST")
+          .mb-3
+            input#utilisationId.form-control(
+              type="hidden",
+              name="utilisationId",
+              required="true",
+              value=utilisation.id
+            )
+          .row.mb-3
+            div.btn-toolbar
+              div.btn-group.mr-2
+                button.btn.btn-sm.btn-outline-dark(type="submit") Delete
+              div.btn-group.mr-2
+                a.btn.btn-sm.btn-outline-dark(href='/click-fablab/utilisation') Retour
+
+
+
+

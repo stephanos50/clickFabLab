@@ -1,0 +1,33 @@
+extends layout
+block content
+  h1=title
+  h3 Equipement: #{equipement.name}
+  div(style='margin-left:20px;margin-top:20px')
+    dl
+      if notEquipement
+        h5 This equipement has use
+        div.btn-group.mr-2
+          a.btn.btn-sm.btn-outline-dark(href='/click-fablab/equipement') Retour
+      else
+        h5 This equipement has no use.
+        hr
+        p Do you really want to delete this Equipement?
+
+        form(method="POST")
+          .mb-3
+            input#equipementid.form-control(
+              type="hidden",
+              name="equipementid",
+              required="true",
+              value=equipement._id
+            )
+          .row.mb-3
+            div.btn-toolbar
+              div.btn-group.mr-2
+                button.btn.btn-sm.btn-outline-dark(type="submit") Delete
+              div.btn-group.mr-2
+                a.btn.btn-sm.btn-outline-dark(href='/click-fablab/equipement') Retour
+
+
+
+

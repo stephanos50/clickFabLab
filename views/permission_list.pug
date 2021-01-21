@@ -1,0 +1,33 @@
+extends layout
+block content
+
+  h1=title
+  ol
+
+  hr
+  h6 #{roles.name}
+
+  form( method="POST")
+    fieldset
+      .row.mb-3
+        legend.col-form-label.col-sm-2.pt-0 Permission:
+          .col-sm-10
+            each permission in permissions
+              .form-check
+                input.form-check-input(
+                  type="checkbox",
+                  name="permission",
+                  id=permission.name,
+                  value=permission.name,
+                  checked=permission.checked
+                )
+                label.form-check-label(for=permission.name) #{permission.name}
+      .row.mb-3
+        div.btn-toolbar
+          div.btn-group.mr-2
+            button.btn.btn-sm.btn-outline-dark(href=`/click-fablab/permission/${roles.name}/update`, type="submit") Ajouter
+          div.btn-group.mr-2
+            a.btn.btn-sm.btn-outline-dark(href='/click-fablab/role') Retour
+
+
+

@@ -1,0 +1,31 @@
+extends layout
+
+block content
+
+
+  h1= title
+  if authenticationFailed
+    .alert.alert-warning.alert-dismissible.fade.show Wrong email or password.
+      button(type="button" class="btn-close" data-dismiss="alert" aria-label="Close")
+
+  form(action="/login", method="post")
+    .form-group.row
+      .col-md-3
+        label.form-label(for="emailInput") Email:
+        input#emailInput.form-control(name="username", type="email", autofocus, required)
+
+    .form-group.row
+      .col-md-3
+        label.form-label(for="passwordInput") Password:
+        input#passwordInput.form-control(name="password", type="password", required)
+    br
+    .form-group.row
+      .col-md-2
+        button.btn.btn-outline-dark(type="submit") Login
+        a.btn.btn-outline-dark(href="/signIn" class={active: currentUrl === "/signIn"}) Sign In
+  if errors
+    ul
+      each error in errors
+        li!= error.msg
+
+

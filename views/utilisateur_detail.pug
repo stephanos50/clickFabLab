@@ -1,0 +1,76 @@
+extends layout
+block content
+  h1= title
+  hr
+  .row
+    .col-sm-4
+      form(method="POST")
+        label.form-label(for="firstname") Firstname:
+          input#firstname.form-control(
+            type="text",
+            name="firstname",
+            required,
+            value=undefined === utilisateur ? '' : utilisateur.first_name
+          )
+        label.form-label(for="familyname") Familyname:
+          input#familyname.form-control(
+            type="text",
+            name="familyname",
+            required,
+            value=undefined === utilisateur ? '' : utilisateur.family_name
+          )
+        label.form-label(for="username") Email:
+          input#username.form-control(
+            type="email",
+            name="username",
+            readonly,
+            value=undefined === utilisateur ? '' : utilisateur.username
+          )
+        label.form-label(for="password") Nouveau mot de passe :
+          input#password.form-control(
+            type="password",
+            name="nouveaumotdepasse",
+            required,
+          )
+        br
+        br
+        h5 Les Permissions
+        each role in roles
+          .form-check
+            input.form-check-input(
+              type="checkbox",
+                name="role",
+                id=role.name,
+                value=role.name,
+                checked=role.checked
+              )
+            label.form-check-label(for=role.name) #{role.name}
+
+        div.btn-toolbar
+          div.btn-group.mr-2
+            button.btn.btn-sm.btn-outline-dark(type="submit") modifier
+          div.btn-group.mr-2
+            a.btn.btn-sm.btn-outline-dark(href='/click-fablab/utilisateur') Retour
+
+      if errors
+        ul
+          each error in errors
+            li!= error.msg
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,89 @@
+extends layout
+
+block content
+  h1=title
+
+  form(method="POST")
+    if !admin
+      .mb-3
+        label.form-label(for="name") Nom
+        .col-md-3
+          input#name.form-control(
+            type="text"
+            name="name"
+            value=equipement.name
+            readonly
+          )
+      .mb-3
+        label.form-label(for="tarif") Tarif
+        .col-md-3
+          input#date.form-control(
+            type="text"
+            name="tarif"
+            value=equipement.price
+            readonly
+          )
+    if member
+      label.form-label(for="member") Member:
+      .col-md-3
+        select#member.form-select(
+          name="member"
+        )
+          option(selected) Select member
+          each role in roles
+            if role.roles[0].name === "member"
+              option(value= role.username) #{role.first_name} #{role.family_name} -#{role.username}
+    if admin
+      .mb-3
+        label.form-label(for="name") Membre
+        .col-md-3
+          input#name.form-control(
+            type="text"
+            name="member"
+            value=username
+            readonly
+          )
+      label.form-label(for="equipement") Equipements:
+      .col-md-3
+        select#equipement.form-select(
+          name="equipement"
+        )
+          option(selected) Select equipement
+          each equipement in equipements
+            option(value= equipement.id) #{equipement.id} #{equipement.name} :: #{equipement.price} $ minutes
+
+
+
+    .mb-3
+      label.form-label(for="date") Date
+      .col-md-3
+        input#date.form-control(
+          type="date",
+          name="date",
+          value=
+          required
+
+        )
+    .mb-3
+      label.form-label(for="minute") Nombre de minute
+      .col-md-3
+        input#minute.form-control(
+          type="number"
+          name="minute"
+          required
+
+        )
+    .mb-3
+    .row
+      div.btn-toolbar
+        div.btn-group.mr-2
+          button.btn.btn-sm.btn-outline-dark(type="submit") Valider
+        if !admin
+          div.btn-group.mr-2
+            a.btn.btn-sm.btn-outline-dark(href='/click-fablab/equipement') Retour
+        else
+          div.btn-group.mr-2
+            a.btn.btn-sm.btn-outline-dark(href='/click-fablab/utilisateur') Retour
+    script(src="/dateformat.js", type='text/javascript')
+
+

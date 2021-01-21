@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  h1= title
+  form(method="post")
+      .form-group.row
+        .col-md-3
+          label.form-label(for="first_name") First name:
+          input#first_name.form-control(name="first_name", type="text", autofocus, required)
+      .form-group.row
+        .col-md-3
+          label.form-label(for="family_name") Family name:
+          input#family_name.form-control(name="family_name", type="text", autofocus, required)
+      .form-group.row
+        .col-md-3
+          label.form-label(for="email") Email:
+          input#email.form-control(name="username", type="email", autofocus, required)
+      .form-group.row
+        .col-md-3
+          label.form-label(for="passwordInput") Password:
+          input#passwordInput.form-control(name="password", type="password", required)
+      br
+      .form-group.row
+        .col-md-4
+          button.btn.btn-outline-dark(type="submit") Sign In
+          a.btn.btn-outline-dark(href="/login" class={active: currentUrl === "/login"}) Login
+  if errors
+    ul
+      each error in errors
+        li!= error.msg
+
+

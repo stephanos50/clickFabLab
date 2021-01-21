@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  h1= title
+  if newlyAuthenticated
+    .alert.alert-success.alert-dismissible.fade.show You are authenticated as #{user.first_name}!
+      button(type="button" class="btn-close" data-dismiss="alert" aria-label="Close")
+
+
+  h5 Manager
+  p Username : admin@yahoo.fr
+  h5 Comptable
+  p Username : louis@yahoo.fr
+  h5 Member
+  p Username : arthur@yahoo.fr
+  p Username : jean@yahoo.fr
+  p Username : michel@yahoo.fr
+  h5 Mot de passe
+  p mot de passe identique : root
+
+  h4 Ne fonctionne pas
+  h6 Les points imortants qui ne fonctionne pas
+
+  p Implémenter la methode calculPrix() ne fonctionne pas
+  p Numero de facture ne fonctionne pas
+  p Affichage du détail de la facture ne fonctionne pas
+  p Sécurité des champs : Certain champs n'en on pas
+
+
+

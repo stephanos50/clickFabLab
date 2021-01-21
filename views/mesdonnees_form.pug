@@ -1,0 +1,80 @@
+extends layout
+block content
+  h1= title
+  hr
+  .row
+    .col-sm-3
+      form(method="POST")
+        label.form-label(for="firstname") Firstname:
+          input#firstname.form-control(
+            type="text",
+            name="firstname",
+            required,
+            value=undefined === utilisateur ? '' : utilisateur.first_name
+          )
+        label.form-label(for="familyname") Last name:
+          input#familyname.form-control(
+            type="text",
+            name="familyname",
+            required,
+            value=undefined === utilisateur ? '' : utilisateur.family_name
+          )
+        label.form-label(for="username") Email:
+          input#username.form-control(
+            type="email",
+            name="username",
+            readonly,
+            value=undefined === utilisateur ? '' : utilisateur.username
+          )
+        div.btn-toolbar
+          div.btn-group.mr-2
+            button.btn.btn-sm.btn-outline-dark(href="/click-fablab/mesdonnees", type="submit") Modifier
+
+    .col-sm-1
+    .col-sm-3
+      if authenticationFailed
+        .alert.alert-warning.alert-dismissible.fade.show Erreur mot de passe.
+          button(type="button" class="btn-close" data-dismiss="alert" aria-label="Close")
+      if authenticationAccepted
+        .alert.alert-warning.alert-dismissible.fade.show Le mot de passe à bien été modifié
+          button(type="button" class="btn-close" data-dismiss="alert" aria-label="Close")
+      form(method="POST")
+        label.form-label(for="password") Ancien mot de passe :
+          input#password.form-control(
+            type="password",
+            name="ancienMotDePasse",
+            required,
+          )
+        label.form-label(for="password") Nouveau mot de passe :
+          input#password.form-control(
+            type="password",
+            name="nouveauMotDePasse",
+            required,
+          )
+        label.form-label(for="password") Confirmation du nouveau mot de passe :
+          input#password.form-control(
+            type="password",
+            name="conformerNouveauMotDePasse",
+            required,
+          )
+        div.btn-toolbar
+          div.btn-group.mr-2
+            button.btn.btn-sm.btn-outline-dark(href="/click-fablab/mesdonnees", type="submit") Modifier
+    .row
+      if errors
+        ul
+          each error in errors
+            li!= error.msg
+
+
+
+
+
+
+
+
+
+
+
+
+

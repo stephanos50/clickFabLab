@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    h1 Rôle: #{role.name}
+
+
+    div(style="margin-left:20px;margin-top:20px")
+      dl
+        each user in role.users
+          dt=user.username
+        else
+          p This role has no utilisateur
+      .mb-3
+        a.btn.btn-sm.btn-outline-dark(href='/click-fablab/role') Retour
+

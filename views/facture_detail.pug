@@ -1,0 +1,22 @@
+extends layout
+block content
+
+  h1=title
+
+
+  each utilisation in liste_utilisation
+      p= "nom de l’équipement :" + ' ' + utilisation.equipement.name
+      p= "le prix à la minute :" + ' ' + utilisation.equipement.price + ' ' + 'euro'
+      p="le nombre de minutes à facturer :" + ' ' + utilisation.duration
+      p="le sous-total"
+      hr
+
+  h5 Sous total
+  h6=montantTotal + ' ' + 'euro'
+
+  hr
+  a.btn.btn-sm.btn-outline-dark(href='/click-fablab/facture') Retour
+
+
+
+

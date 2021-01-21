@@ -1,0 +1,41 @@
+extends layout
+block content
+  h1= title
+
+  form(method="POST")
+    .row
+      .col-sm-3
+        label.form-label(for="equipement") Equipement:
+        input#name.form-control(
+          type="text",
+          placeholder="Equipementetc.",
+          name="equipement",
+          required,
+          value=undefined === equipement ? '' : equipement.name
+        )
+    br
+    .row
+      .col-sm-3
+        label.form-label(for="tarif") Tarif:
+        input#name.form-control(
+          type="number",
+          step="0.01",
+          placeholder="Equipementetc.",
+          name="tarif",
+          required,
+          value=undefined === equipement ? '' : equipement.price
+        )
+    br
+    .row.mb-3
+      div.btn-toolbar
+        div.btn-group.mr-2
+          button.btn.btn-sm.btn-outline-dark(type="submit") Valider
+        div.btn-group.mr-2
+          a.btn.btn-sm.btn-outline-dark(href='/click-fablab/equipement') Retour
+  if errors
+    ul
+      each error in errors
+        li!= error.msg
+
+
+

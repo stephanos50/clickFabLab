@@ -1,0 +1,17 @@
+extends layout
+block content
+
+  h1=title
+
+  p=equipement.name
+  p=equipement.price + ' ' + 'euro la minute'
+  hr
+  .row.mb-3
+    div.btn-toolbar
+      div.btn-group.mr-2
+        a.btn.btn-sm.btn-outline-dark(href='/click-fablab/equipement') Retour
+      div.btn-group.mr-2
+        a.btn.btn-sm.btn-outline-dark(href="/click-fablab/utilisation/" + equipement.id + "/create") Add use
+
+
+

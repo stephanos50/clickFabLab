@@ -1,0 +1,31 @@
+extends layout
+
+block content
+  h1 #{title}
+
+  form(method="POST")
+    .row
+      .col-sm-3
+        label.form-label(for="name") Rôle:
+        input#name.form-control(
+          type="text",
+          placeholder="Member, Manager etc.",
+          name="name",
+          required,
+          value=undefined === role ? '' : role.name
+        )
+    br
+    .row
+      div.btn-toolbar
+        div.btn-group.mr-2
+          button.btn.btn-sm.btn-outline-dark(href=type="submit") Ajouter
+        div.btn-group
+          a.btn.btn-sm.btn-outline-dark(href='/click-fablab/role') Retour
+
+
+
+
+  if errors
+    ul
+      each error in errors
+        li!= error.msg
