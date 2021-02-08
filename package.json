@@ -1,11 +1,10 @@
 {
-  "name": "projet-stephanos50",
+  "name": "clickfablab",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www",
-    "serverstart": "set DEBUG=express-projet-stephanos50:& npm run devstart"
+   
   },
   "dependencies": {
     "bcrypt": "^5.0.0",
@@ -25,7 +24,5 @@
     "pug": "^3.0.0",
     "sequelize": "^6.3.5"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.6"
-  }
+  
 }
